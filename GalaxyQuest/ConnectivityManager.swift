@@ -14,13 +14,16 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     let localPeerID = MCPeerID(displayName: UIDevice.currentDevice().name)
     var advertiser:MCNearbyServiceAdvertiser
     var browser:MCNearbyServiceBrowser
+    var session:MCSession
     
     override init() {
         self.advertiser = MCNearbyServiceAdvertiser(peer: self.localPeerID, discoveryInfo: nil, serviceType: self.GalaxyQuestServiceType)
         self.browser = MCNearbyServiceBrowser(peer: self.localPeerID, serviceType: self.GalaxyQuestServiceType)
+        self.session = MCSession(peer: self.localPeerID)
         super.init()
         self.advertiser.delegate = self;
         self.browser.delegate=self;
+        self.session.delegate = self;
     }
     
     // MARK: Advertising
@@ -31,9 +34,11 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     
     func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!) {
         
-        let session = MCSession(peer: self.localPeerID)
         
-        invitationHandler(true, session);
+        invitationHandler(true, self.session)
+
+        
+        
         //TODO: handle getting an invitation
     }
     
@@ -46,7 +51,8 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     }
     
     func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
-        //TODO: handle finding a peer
+        browser.invitePeer(peerID, toSession: self.session, withContext: nil, timeout: 30.0)
+        browser.stopBrowsingForPeers()
     }
     
     func browser(browser: MCNearbyServiceBrowser!, lostPeer peerID: MCPeerID!) {
@@ -59,10 +65,13 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     // MARK: Sessions
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         //TODO: handle data
+        let message = NSString(data: data, encoding: NSUTF8StringEncoding);
+        print(message);
     }
     
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
         //TODO: handle session state
+        self.session.sendData("Test".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), toPeers: self.session.connectedPeers, withMode:.Reliable, error: nil)
     }
     
     func session(session: MCSession!, didStartReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, withProgress progress: NSProgress!) {
@@ -76,4 +85,5 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     func session(session: MCSession!, didReceiveStream stream: NSInputStream!, withName streamName: String!, fromPeer peerID: MCPeerID!) {
         //Will probably not be using
     }
+    
 }
