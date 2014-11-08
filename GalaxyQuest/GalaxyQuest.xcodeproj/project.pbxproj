@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */; };
+		75E5EA471A0EA8AA00A66D37 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */; };
 		75EC91F01A0E98D4007AF86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC91EF1A0E98D4007AF86E /* AppDelegate.swift */; };
 		75EC91F21A0E98D4007AF86E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC91F11A0E98D4007AF86E /* ViewController.swift */; };
 		75EC91F51A0E98D4007AF86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EC91F31A0E98D4007AF86E /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
+		75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		75EC91EA1A0E98D4007AF86E /* GalaxyQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalaxyQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EC91EE1A0E98D4007AF86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75EC91EF1A0E98D4007AF86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E5EA471A0EA8AA00A66D37 /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +64,8 @@
 		75EC91E11A0E98D4007AF86E = {
 			isa = PBXGroup;
 			children = (
+				75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */,
+				75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */,
 				75EC91EC1A0E98D4007AF86E /* GalaxyQuest */,
 				75EC92021A0E98D4007AF86E /* GalaxyQuestTests */,
 				75EC91EB1A0E98D4007AF86E /* Products */,
@@ -212,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */,
 				75EC91F21A0E98D4007AF86E /* ViewController.swift in Sources */,
 				75EC91F01A0E98D4007AF86E /* AppDelegate.swift in Sources */,
 			);
@@ -405,6 +413,7 @@
 				75EC920B1A0E98D4007AF86E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		75EC920C1A0E98D4007AF86E /* Build configuration list for PBXNativeTarget "GalaxyQuestTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +422,7 @@
 				75EC920E1A0E98D4007AF86E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
