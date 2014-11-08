@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let session = ConnectivityManager()
+    let factory = DashboardModuleFactory()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,13 @@ class ViewController: UIViewController {
     @IBAction func advertise(sender: AnyObject) {
 
         self.session.beginBrowsing()
+    }
+    
+    override func viewDidAppear(animated:Bool){
+        for var i = 0; i < 3; i = i + 1{
+                let module = self.factory.createModule()
+                println("\(module.name): \(module.action) the \(module.name)")
+            }
     }
 
 }
