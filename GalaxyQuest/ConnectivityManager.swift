@@ -26,6 +26,11 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
         self.session.delegate = self;
     }
     
+    func beginGame(){
+        self.advertiser.stopAdvertisingPeer()
+        self.browser.stopBrowsingForPeers()
+    }
+    
     // MARK: Advertising
     
     func beginAdvertising(){
