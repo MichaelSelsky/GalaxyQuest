@@ -9,8 +9,8 @@
 import UIKit
 import MultipeerConnectivity
 
-class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate {
-    let GalaxyQuestServiceType = "GalaxyQuestGameService"
+class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
+    let GalaxyQuestServiceType = "gq-game"
     let localPeerID = MCPeerID(displayName: UIDevice.currentDevice().name)
     var advertiser:MCNearbyServiceAdvertiser
     var browser:MCNearbyServiceBrowser
@@ -22,6 +22,8 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
         self.advertiser.delegate = self;
         self.browser.delegate=self;
     }
+    
+    // MARK: Advertising
     
     func beginAdvertising(){
         self.advertiser.startAdvertisingPeer()
@@ -38,7 +40,7 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     func advertiser(advertiser: MCNearbyServiceAdvertiser!, didNotStartAdvertisingPeer error: NSError!) {
         //TODO: error handle when not start advertising
     }
-   
+    // MARK: Browsing
     func beginBrowsing(){
         self.browser.startBrowsingForPeers()
     }
@@ -53,5 +55,25 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     
     func browser(browser: MCNearbyServiceBrowser!, didNotStartBrowsingForPeers error: NSError!) {
         //TODO: handle error when starting a browse;
+    }
+    // MARK: Sessions
+    func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
+        //TODO: handle data
+    }
+    
+    func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
+        //TODO: handle session state
+    }
+    
+    func session(session: MCSession!, didStartReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, withProgress progress: NSProgress!) {
+        //Will not be using probably
+    }
+    
+    func session(session: MCSession!, didFinishReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, atURL localURL: NSURL!, withError error: NSError!) {
+        //Will not be using probably
+    }
+    
+    func session(session: MCSession!, didReceiveStream stream: NSInputStream!, withName streamName: String!, fromPeer peerID: MCPeerID!) {
+        //Will probably not be using
     }
 }
