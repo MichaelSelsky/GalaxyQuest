@@ -36,7 +36,7 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
         
         
         invitationHandler(true, self.session)
-
+        
         
         
         //TODO: handle getting an invitation
@@ -53,6 +53,7 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
         browser.invitePeer(peerID, toSession: self.session, withContext: nil, timeout: 30.0)
         browser.stopBrowsingForPeers()
+        self.advertiser.stopAdvertisingPeer()
     }
     
     func browser(browser: MCNearbyServiceBrowser!, lostPeer peerID: MCPeerID!) {
@@ -71,7 +72,13 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
         //TODO: handle session state
-        self.session.sendData("Test".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), toPeers: self.session.connectedPeers, withMode:.Reliable, error: nil)
+        self.sendTextToSession("hey")
+        if state == .Connected {
+            if session.connectedPeers.count > 2 {
+                self.advertiser.stopAdvertisingPeer()
+                //TODO: Start gaemz
+            }
+        }
     }
     
     func session(session: MCSession!, didStartReceivingResourceWithName resourceName: String!, fromPeer peerID: MCPeerID!, withProgress progress: NSProgress!) {
@@ -86,4 +93,9 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
         //Will probably not be using
     }
     
+    func sendTextToSession(text: String){
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        
+        self.session.sendData(data, toPeers: self.session.connectedPeers, withMode: .Reliable, error: nil)
+    }
 }
