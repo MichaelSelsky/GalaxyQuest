@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75BC03331A0ED1790031E30A /* DashboardModules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BC03321A0ED1790031E30A /* DashboardModules.plist */; };
+		75BC03351A0ED4D10031E30A /* DashboardModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC03341A0ED4D10031E30A /* DashboardModuleFactory.swift */; };
 		75D2BB2B1A0EB9A300ED9FB4 /* DashboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D2BB2A1A0EB9A300ED9FB4 /* DashboardModule.swift */; };
 		75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */; };
 		75E5EA471A0EA8AA00A66D37 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75BC03321A0ED1790031E30A /* DashboardModules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DashboardModules.plist; sourceTree = "<group>"; };
+		75BC03341A0ED4D10031E30A /* DashboardModuleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModuleFactory.swift; sourceTree = "<group>"; };
 		75D2BB2A1A0EB9A300ED9FB4 /* DashboardModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModule.swift; sourceTree = "<group>"; };
 		75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -69,6 +73,8 @@
 				75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */,
 				75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */,
 				75D2BB2A1A0EB9A300ED9FB4 /* DashboardModule.swift */,
+				75BC03321A0ED1790031E30A /* DashboardModules.plist */,
+				75BC03341A0ED4D10031E30A /* DashboardModuleFactory.swift */,
 				75EC91EC1A0E98D4007AF86E /* GalaxyQuest */,
 				75EC92021A0E98D4007AF86E /* GalaxyQuestTests */,
 				75EC91EB1A0E98D4007AF86E /* Products */,
@@ -203,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75EC91F51A0E98D4007AF86E /* Main.storyboard in Resources */,
+				75BC03331A0ED1790031E30A /* DashboardModules.plist in Resources */,
 				75EC91FA1A0E98D4007AF86E /* LaunchScreen.xib in Resources */,
 				75EC91F71A0E98D4007AF86E /* Images.xcassets in Resources */,
 			);
@@ -225,6 +232,7 @@
 				75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */,
 				75EC91F21A0E98D4007AF86E /* ViewController.swift in Sources */,
 				75D2BB2B1A0EB9A300ED9FB4 /* DashboardModule.swift in Sources */,
+				75BC03351A0ED4D10031E30A /* DashboardModuleFactory.swift in Sources */,
 				75EC91F01A0E98D4007AF86E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

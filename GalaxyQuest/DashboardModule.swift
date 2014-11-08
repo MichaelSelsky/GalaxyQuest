@@ -22,11 +22,15 @@ class DashboardModule: NSObject {
     var type: DashboardControlType
     var name: String
     var value: Int
+    var action: String
+
     
-    init(type: DashboardControlType, name: String){
+    init(type: DashboardControlType, name: String, action: String){
         self.type = type
         self.name = name
         self.value = 0
+        self.action = action
         super.init()
     }
+    
 }

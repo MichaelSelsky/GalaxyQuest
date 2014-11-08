@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Action</key>
+		<string>Snuggle</string>
+		<key>Name</key>
+		<string>Bunnies</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Action</key>
+		<string>Tickle</string>
+		<key>Name</key>
+		<string>FlubberWubber</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Action</key>
+		<string>Ring</string>
+		<key>Name</key>
+		<string>Banana Phone</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Action</key>
+		<string>Submit</string>
+		<key>Name</key>
+		<string>TPS report</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Action</key>
+		<string>Fire</string>
+		<key>Name</key>
+		<string>Potato Gun</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>Action</key>
+		<string>Use</string>
+		<key>Name</key>
+		<string>Tractor Beam</string>
+		<key>Type</key>
+		<integer>0</integer>
+	</dict>
+</array>
+</plist>
