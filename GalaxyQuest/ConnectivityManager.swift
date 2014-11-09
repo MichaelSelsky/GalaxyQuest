@@ -1,3 +1,4 @@
+
 //
 //  ConnectivityManager.swift
 //  GalaxyQuest
@@ -12,14 +13,21 @@ import MultipeerConnectivity
 class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     let GalaxyQuestServiceType = "gq-game"
     let localPeerID = MCPeerID(displayName: UIDevice.currentDevice().name)
+
+    internal let updateTeamMembersNotification = "updateTeamMembers"
+    internal let updateFoundPeersNotification = "foundPeersNotification"
+    
     var advertiser:MCNearbyServiceAdvertiser
     var browser:MCNearbyServiceBrowser
     var session:MCSession
+    
+    var foundPeers:NSMutableArray
     
     override init() {
         self.advertiser = MCNearbyServiceAdvertiser(peer: self.localPeerID, discoveryInfo: nil, serviceType: self.GalaxyQuestServiceType)
         self.browser = MCNearbyServiceBrowser(peer: self.localPeerID, serviceType: self.GalaxyQuestServiceType)
         self.session = MCSession(peer: self.localPeerID)
+        self.foundPeers = []
         super.init()
         self.advertiser.delegate = self;
         self.browser.delegate=self;
@@ -50,24 +58,37 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     func advertiser(advertiser: MCNearbyServiceAdvertiser!, didNotStartAdvertisingPeer error: NSError!) {
         //TODO: error handle when not start advertising
     }
+    
+    
+    
+    
     // MARK: Browsing
     func beginBrowsing(){
         self.browser.startBrowsingForPeers()
     }
     
     func browser(browser: MCNearbyServiceBrowser!, foundPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) {
-        browser.invitePeer(peerID, toSession: self.session, withContext: nil, timeout: 30.0)
-        browser.stopBrowsingForPeers()
-        self.advertiser.stopAdvertisingPeer()
+        self.foundPeers.addObject(peerID)
+        NSNotificationCenter.defaultCenter().postNotificationName(self.updateFoundPeersNotification, object: nil)
     }
     
     func browser(browser: MCNearbyServiceBrowser!, lostPeer peerID: MCPeerID!) {
+        self.foundPeers.removeObject(peerID)
+        NSNotificationCenter.defaultCenter().postNotificationName(self.updateFoundPeersNotification, object: nil)
         //TODO: handle losing a peer
     }
     
     func browser(browser: MCNearbyServiceBrowser!, didNotStartBrowsingForPeers error: NSError!) {
         //TODO: handle error when starting a browse;
     }
+    
+    func joinSessionWithID(id: MCPeerID!) {
+        self.browser.invitePeer(id, toSession: self.session, withContext: nil, timeout: 30.0)
+        self.browser.stopBrowsingForPeers()
+    }
+    
+    
+    
     // MARK: Sessions
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         //TODO: handle data
@@ -78,6 +99,7 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
         //TODO: handle session state
         self.sendTextToSession("hey")
+        NSNotificationCenter.defaultCenter().postNotificationName(self.updateTeamMembersNotification, object: nil)
         if state == .Connected {
             if session.connectedPeers.count > 2 {
                 self.advertiser.stopAdvertisingPeer()
@@ -103,4 +125,5 @@ class ConnectivityManager: NSObject, MCNearbyServiceAdvertiserDelegate, MCNearby
         
         self.session.sendData(data, toPeers: self.session.connectedPeers, withMode: .Reliable, error: nil)
     }
+    
 }
