@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjq-14-CAR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Galaxy_Quest_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Spz-hA-640">
+                                <rect key="frame" x="0.0" y="28" width="600" height="318"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Spz-hA-640" secondAttribute="height" multiplier="100:53" id="DkA-3p-2OW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nef-bO-N3o">
+                                <rect key="frame" x="0.0" y="428" width="600" height="70"/>
+                                <color key="backgroundColor" red="0.58178119930000005" green="0.12617880200000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="aTb-ic-szu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Create a Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SdG-51-K3g"/>
+                                    <segue destination="dRB-ut-wx4" kind="show" id="Cgt-DM-Nzv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gog-6r-NkM">
+                                <rect key="frame" x="0.0" y="506" width="600" height="70"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find a Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cq6-mh-WKp"/>
+                                    <segue destination="mRw-Zb-Yc2" kind="show" id="Foc-xX-JeS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjq-14-CAR">
                                 <rect key="frame" x="277" y="159" width="65" height="30"/>
                                 <state key="normal" title="Advertise">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,10 +64,174 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Spz-hA-640" secondAttribute="centerX" id="3u0-Ll-Jzh"/>
+                            <constraint firstAttribute="centerX" secondItem="Nef-bO-N3o" secondAttribute="centerX" id="CTp-qg-rpA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nef-bO-N3o" secondAttribute="trailing" constant="-16" id="Gr6-wn-X5w"/>
+                            <constraint firstItem="Nef-bO-N3o" firstAttribute="top" secondItem="Spz-hA-640" secondAttribute="bottom" constant="82" id="M0L-lk-3yf"/>
+                            <constraint firstItem="gog-6r-NkM" firstAttribute="height" secondItem="Nef-bO-N3o" secondAttribute="height" id="MPG-SO-eFN"/>
+                            <constraint firstItem="Spz-hA-640" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="bIs-2l-yS1"/>
+                            <constraint firstItem="Spz-hA-640" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="dSl-k7-7br"/>
+                            <constraint firstItem="gog-6r-NkM" firstAttribute="top" secondItem="Nef-bO-N3o" secondAttribute="bottom" constant="8" id="e4Q-y8-s4N"/>
+                            <constraint firstAttribute="centerX" secondItem="gog-6r-NkM" secondAttribute="centerX" id="ecU-dX-IBn"/>
+                            <constraint firstItem="gog-6r-NkM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="gKI-25-M3v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Spz-hA-640" secondAttribute="trailing" constant="-16" id="pr8-Lt-x34"/>
+                            <constraint firstItem="Nef-bO-N3o" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="qUe-Mv-dYw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gog-6r-NkM" secondAttribute="trailing" constant="-16" id="wZ5-FJ-jkZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bjq-14-CAR"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="171" y="279"/>
+        </scene>
+        <!--Create Game View Controller View Controller-->
+        <scene sceneID="lyp-ma-9Hz">
+            <objects>
+                <viewController id="dRB-ut-wx4" customClass="CreateGameViewControllerViewController" customModule="GalaxyQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dkM-wK-5zh"/>
+                        <viewControllerLayoutGuide type="bottom" id="MVh-TZ-Vc1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g5M-73-QmW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-uF-xfG">
+                                <rect key="frame" x="109" y="370" width="383" height="85"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Prepare ship for ludicrous speed!">
+                                    <color key="titleColor" red="0.23137254900000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startGame:" destination="dRB-ut-wx4" eventType="touchUpInside" id="qne-8p-KRH"/>
+                                    <segue destination="sA9-XL-BEL" kind="presentation" id="yyW-Vk-Dde"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30Y-fe-6eX">
+                                <rect key="frame" x="24" y="107" width="553" height="183"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="183" id="vEc-uI-fh2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vwT-uF-xfG" firstAttribute="leading" secondItem="g5M-73-QmW" secondAttribute="leadingMargin" constant="20" id="5gc-ya-0eG"/>
+                            <constraint firstItem="30Y-fe-6eX" firstAttribute="top" secondItem="dkM-wK-5zh" secondAttribute="bottom" constant="87" id="Bhl-5q-Jt9"/>
+                            <constraint firstAttribute="centerX" secondItem="vwT-uF-xfG" secondAttribute="centerX" constant="-0.5" id="IGN-eV-Ckl"/>
+                            <constraint firstItem="30Y-fe-6eX" firstAttribute="leading" secondItem="g5M-73-QmW" secondAttribute="leadingMargin" constant="8" id="Kzw-JJ-el4"/>
+                            <constraint firstAttribute="centerX" secondItem="30Y-fe-6eX" secondAttribute="centerX" constant="-0.5" id="f4L-QC-53Y"/>
+                            <constraint firstItem="MVh-TZ-Vc1" firstAttribute="top" secondItem="vwT-uF-xfG" secondAttribute="bottom" constant="145" id="lJh-fI-sYX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentMembers" destination="30Y-fe-6eX" id="tQa-sW-hhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99F-QE-N1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Xg2-b4-4Qu">
+            <objects>
+                <viewController id="o1t-1g-cST" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HOt-0z-uRG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ttO-8p-ge5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W9u-IA-D8i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4lw-uP-kUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341" y="152"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="Mfa-ou-Pfs">
+            <objects>
+                <viewController id="sA9-XL-BEL" customClass="LoadingViewController" customModule="GalaxyQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E04-aj-AuV"/>
+                        <viewControllerLayoutGuide type="bottom" id="xah-cr-rnM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="07t-aA-Rev">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fw-7u-561">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="7fw-7u-561" secondAttribute="centerX" id="NCJ-XA-pMd"/>
+                            <constraint firstAttribute="centerY" secondItem="7fw-7u-561" secondAttribute="centerY" constant="0.5" id="QPJ-cE-oeI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DXM-sx-JHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="142"/>
+        </scene>
+        <!--Find Game Table View Controller-->
+        <scene sceneID="CMj-iV-1Y5">
+            <objects>
+                <tableViewController id="mRw-Zb-Yc2" customClass="FindGameTableViewController" customModule="GalaxyQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" id="Lez-Jd-qzR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="K95-zN-yMZ" rowHeight="52" style="IBUITableViewCellStyleDefault" id="aBG-mg-tcu">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBG-mg-tcu" id="bg5-tC-Uhf">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K95-zN-yMZ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mRw-Zb-Yc2" id="iAZ-51-3II"/>
+                            <outlet property="delegate" destination="mRw-Zb-Yc2" id="pUI-AU-Rts"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="sA9-XL-BEL" kind="presentation" identifier="startGameSegue" id="1sf-oz-5qP"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kde-o3-NME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872" y="830"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Galaxy_Quest_Logo" width="960" height="540"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1sf-oz-5qP"/>
+    </inferredMetricsTieBreakers>
 </document>
