@@ -12,10 +12,10 @@ class ViewController: UIViewController {
     
     let session = ConnectivityManager()
     let factory = DashboardModuleFactory()
+    var isCreating: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.session.beginAdvertising() 
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -36,5 +36,29 @@ class ViewController: UIViewController {
             }
     }
 
+    @IBAction func createGame(sender: AnyObject) {
+        self.session.beginAdvertising()
+        self.isCreating = true
+    }
+    
+    @IBAction func findGame(sender: AnyObject) {
+        self.session.beginBrowsing()
+        self.isCreating = false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destinationViewController = segue.destinationViewController
+        
+        if self.isCreating! {
+            let vC = destinationViewController as CreateGameViewControllerViewController
+            vC.session = session
+            
+        } else {
+            let vC = destinationViewController as FindGameTableViewController
+            vC.session = session
+        }
+    
+    }
+    
 }
 
