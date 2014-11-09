@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class CreateGameViewControllerViewController: UIViewController {
 
+    var session: ConnectivityManager?
+
+    @IBOutlet weak var currentMembers: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NSNotificationCenter.defaultCenter().addObserverForName(session?.updateTeamMembersNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+            if let connectedPeers = self.session?.session.connectedPeers {
+                var peers = ""
+                for peer in connectedPeers {
+                    peers = "\(peers) \n\(peer.displayName)"
+                }
+                self.currentMembers.text = peers
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +34,9 @@ class CreateGameViewControllerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func startGame(sender: AnyObject) {
+        self.session!.beginGame()
+    }
 
     /*
     // MARK: - Navigation
