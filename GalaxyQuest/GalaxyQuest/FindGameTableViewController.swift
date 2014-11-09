@@ -7,11 +7,33 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class FindGameTableViewController: UITableViewController {
 
+    var session: ConnectivityManager?
+    var dataSet: [MCPeerID]
+    
+    override init() {
+        dataSet = []
+        
+        super.init()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        dataSet = []
+       super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        NSNotificationCenter.defaultCenter().addObserverForName(session!.updateFoundPeersNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+            if let dataSet = self.session?.foundPeers as? [MCPeerID] {
+                self.dataSet = dataSet
+                self.tableView.reloadData()
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,24 +52,28 @@ class FindGameTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.dataSet.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel.text = self.dataSet[indexPath.row].displayName
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.session?.joinSessionWithID(self.dataSet[indexPath.row])
+        //TODO: Go to viewcontroller to wait for game to start
+    }
 
     /*
     // Override to support conditional editing of the table view.
