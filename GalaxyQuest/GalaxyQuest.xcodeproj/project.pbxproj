@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		75BC03331A0ED1790031E30A /* DashboardModules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BC03321A0ED1790031E30A /* DashboardModules.plist */; };
 		75BC03351A0ED4D10031E30A /* DashboardModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC03341A0ED4D10031E30A /* DashboardModuleFactory.swift */; };
+		75BC033B1A0EE8AF0031E30A /* FindGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC033A1A0EE8AF0031E30A /* FindGameTableViewController.swift */; };
+		75BC033D1A0EEAB30031E30A /* CreateGameViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC033C1A0EEAB30031E30A /* CreateGameViewControllerViewController.swift */; };
+		75BC033F1A0EEB840031E30A /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC033E1A0EEB840031E30A /* LoadingViewController.swift */; };
 		75D2BB2B1A0EB9A300ED9FB4 /* DashboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D2BB2A1A0EB9A300ED9FB4 /* DashboardModule.swift */; };
 		75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */; };
 		75E5EA471A0EA8AA00A66D37 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */; };
@@ -33,6 +36,9 @@
 /* Begin PBXFileReference section */
 		75BC03321A0ED1790031E30A /* DashboardModules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DashboardModules.plist; sourceTree = "<group>"; };
 		75BC03341A0ED4D10031E30A /* DashboardModuleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModuleFactory.swift; sourceTree = "<group>"; };
+		75BC033A1A0EE8AF0031E30A /* FindGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindGameTableViewController.swift; sourceTree = "<group>"; };
+		75BC033C1A0EEAB30031E30A /* CreateGameViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewControllerViewController.swift; sourceTree = "<group>"; };
+		75BC033E1A0EEB840031E30A /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		75D2BB2A1A0EB9A300ED9FB4 /* DashboardModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModule.swift; sourceTree = "<group>"; };
 		75E5EA441A0EA7B300A66D37 /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		75E5EA461A0EA8AA00A66D37 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -96,6 +102,9 @@
 				75EC91EF1A0E98D4007AF86E /* AppDelegate.swift */,
 				75EC91F11A0E98D4007AF86E /* ViewController.swift */,
 				75EC91F31A0E98D4007AF86E /* Main.storyboard */,
+				75BC033A1A0EE8AF0031E30A /* FindGameTableViewController.swift */,
+				75BC033C1A0EEAB30031E30A /* CreateGameViewControllerViewController.swift */,
+				75BC033E1A0EEB840031E30A /* LoadingViewController.swift */,
 				75EC91F61A0E98D4007AF86E /* Images.xcassets */,
 				75EC91F81A0E98D4007AF86E /* LaunchScreen.xib */,
 				75EC91ED1A0E98D4007AF86E /* Supporting Files */,
@@ -229,8 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75BC033B1A0EE8AF0031E30A /* FindGameTableViewController.swift in Sources */,
 				75E5EA451A0EA7B300A66D37 /* ConnectivityManager.swift in Sources */,
 				75EC91F21A0E98D4007AF86E /* ViewController.swift in Sources */,
+				75BC033F1A0EEB840031E30A /* LoadingViewController.swift in Sources */,
+				75BC033D1A0EEAB30031E30A /* CreateGameViewControllerViewController.swift in Sources */,
 				75D2BB2B1A0EB9A300ED9FB4 /* DashboardModule.swift in Sources */,
 				75BC03351A0ED4D10031E30A /* DashboardModuleFactory.swift in Sources */,
 				75EC91F01A0E98D4007AF86E /* AppDelegate.swift in Sources */,
